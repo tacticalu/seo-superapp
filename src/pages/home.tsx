@@ -20,7 +20,8 @@ export default function Home() {
           <img src={ViteLogo} alt="Vite logo" className="h-28" />
         </div>
         <div className="text-center text-gray-600 text-lg sm:mt-8 dark:text-gray-400">
-          <p className="leading-8">This is an example starter template React with Vite.</p>
+          {/* ← Updated headline below */}
+          <p className="leading-8">Welcome to SEO SuperApp</p>
           <p className="leading-8">
             Vite + React + Typescript + Tailwind CSS + React Hook Form + Vitest
           </p>
