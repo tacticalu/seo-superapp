@@ -1,25 +1,20 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  defer,
-} from 'react-router-dom'
+import { Route, createBrowserRouter, createRoutesFromElements, defer } from 'react-router-dom'
 
 import { AppLayout, PublicLayout, RootLayout } from './layouts'
 import { AuthLayout } from './layouts/auth-layout'
 import { Login } from './pages/auth'
 import Home from './pages/home'
-import UserDashboard from './pages/dashboard'    // imports src/pages/dashboard/index.tsx
-import AdminDashboard from './pages/admin'      // imports src/pages/admin/index.tsx
+import UserDashboard from './pages/dashboard'
+import AdminDashboard from './pages/admin'
 
-// Mock fetch for logged-in user data
-const getUserData = () => {
-  return new Promise<string | null>((resolve) =>
+// stubbed user fetch (you can replace this with a real API call)
+const getUserData = () =>
+  new Promise((resolve) =>
     setTimeout(() => {
-      resolve(window.localStorage.getItem('user'))
+      const user = window.localStorage.getItem('user')
+      resolve(user)
     }, 3000)
   )
-}
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,18 +27,20 @@ export const router = createBrowserRouter(
         <Route path="/" element={<Home />} />
       </Route>
 
-      {/* Authentication pages */}
+      {/* Auth (login) */}
       <Route element={<AuthLayout />}>
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
       </Route>
 
-      {/* App pages (requires login) */}
-      <Route path="dashboard" element={<AppLayout />}>
-        {/* index route → /dashboard */}
+      {/* User dashboard */}
+      <Route path="/dashboard" element={<AppLayout />}>
+        {/* the “index” child makes `/dashboard` itself render UserDashboard */}
         <Route index element={<UserDashboard />} />
       </Route>
-      <Route path="admin" element={<AppLayout />}>
-        {/* index route → /admin */}
+
+      {/* Admin dashboard */}
+      <Route path="/admin" element={<AppLayout />}>
+        {/* the “index” child makes `/admin` itself render AdminDashboard */}
         <Route index element={<AdminDashboard />} />
       </Route>
     </Route>
