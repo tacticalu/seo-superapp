@@ -1,5 +1,5 @@
 // src/pages/dashboard/index.tsx
-export default function UserDashboard() {
+export function UserDashboard() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold">User Dashboard</h1>
