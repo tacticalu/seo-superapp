@@ -1,20 +1,22 @@
-
-import { Route, createBrowserRouter, createRoutesFromElements, defer } from 'react-router-dom'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  defer,
+} from 'react-router-dom'
 
 import { AppLayout, PublicLayout, RootLayout } from './layouts'
 import { AuthLayout } from './layouts/auth-layout'
 import { Login } from './pages/auth'
 import Home from './pages/home'
-import UserDashboard from './pages/dashboard'
-import AdminDashboard from './pages/admin'
+import UserDashboard from './pages/dashboard'    // imports src/pages/dashboard/index.tsx
+import AdminDashboard from './pages/admin'      // imports src/pages/admin/index.tsx
 
-// Ideally this would be an API call to server to get logged in user data
+// Mock fetch for logged-in user data
 const getUserData = () => {
-  return new Promise((resolve, _reject) =>
+  return new Promise<string | null>((resolve) =>
     setTimeout(() => {
-      const user = window.localStorage.getItem('user')
-      resolve(user)
-      // reject('Error')
+      resolve(window.localStorage.getItem('user'))
     }, 3000)
   )
 }
@@ -32,13 +34,17 @@ export const router = createBrowserRouter(
 
       {/* Authentication pages */}
       <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
+        <Route path="login" element={<Login />} />
       </Route>
 
-      {/* Protected app pages */}
-      <Route element={<AppLayout />}>
-        <Route path="/dashboard" element={<UserDashboard />} />
-        <Route path="/admin"     element={<AdminDashboard />} />
+      {/* App pages (requires login) */}
+      <Route path="dashboard" element={<AppLayout />}>
+        {/* index route → /dashboard */}
+        <Route index element={<UserDashboard />} />
+      </Route>
+      <Route path="admin" element={<AppLayout />}>
+        {/* index route → /admin */}
+        <Route index element={<AdminDashboard />} />
       </Route>
     </Route>
   )
