@@ -1,9 +1,5 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  defer,
-} from 'react-router-dom'
+// src/routes.tsx
+import { Route, createBrowserRouter, createRoutesFromElements, defer } from 'react-router-dom'
 
 import { AppLayout, PublicLayout, RootLayout } from './layouts'
 import { AuthLayout } from './layouts/auth-layout'
@@ -34,14 +30,12 @@ export const router = createBrowserRouter(
       </Route>
 
       <Route path="/dashboard" element={<AppLayout />}>
-        <Route path="overview" element={<UserDashboard />} />
+        <Route index element={<UserDashboard />} />
       </Route>
 
       <Route path="/admin" element={<AppLayout />}>
         <Route index element={<AdminDashboard />} />
       </Route>
     </Route>
-  )
-)
   )
 )
