@@ -1,16 +1,20 @@
-// src/routes.tsx
-import { Route, createBrowserRouter, createRoutesFromElements, defer } from 'react-router-dom'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  defer,
+} from 'react-router-dom'
 
 import { AppLayout, PublicLayout, RootLayout } from './layouts'
 import { AuthLayout } from './layouts/auth-layout'
 import { Login } from './pages/auth'
 import Home from './pages/home'
-import UserDashboard from './pages/dashboard'    // ← default import
-import AdminDashboard from './pages/admin'       // ← default import
+import UserDashboard from './pages/dashboard'
+import AdminDashboard from './pages/admin'
 
 // Ideally this would be an API call to server to get logged in user data
 const getUserData = () => {
-  return new Promise<string | null>((resolve) =>
+  return new Promise((resolve, _reject) =>
     setTimeout(() => {
       const user = window.localStorage.getItem('user')
       resolve(user)
@@ -30,14 +34,14 @@ export const router = createBrowserRouter(
       </Route>
 
       <Route path="/dashboard" element={<AppLayout />}>
-        {/* index = /dashboard */}
-        <Route index element={<UserDashboard />} />
+        <Route path="overview" element={<UserDashboard />} />
       </Route>
 
       <Route path="/admin" element={<AppLayout />}>
-        {/* index = /admin */}
         <Route index element={<AdminDashboard />} />
       </Route>
     </Route>
+  )
+)
   )
 )
