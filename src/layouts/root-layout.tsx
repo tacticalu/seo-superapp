@@ -1,5 +1,6 @@
-import { Outlet } from 'react-router-dom'
+// src/layouts/root-layout.tsx
+import { Outlet } from 'react-router-dom';
 
-export function RootLayout() {
-  return <Outlet />
+export default function RootLayout() {
+  return <Outlet />;
 }
