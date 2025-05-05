@@ -1,6 +1,6 @@
 // src/layouts/AuthLayout.tsx
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return <>{children}</>;
