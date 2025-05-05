@@ -1,3 +1,3 @@
-export { default as Login } from './login'
-export { default as Recovery } from './recovery'
-export { default as ResetPassword } from './reset-password'
+// FILE: src/pages/auth/index.ts
+
+export { default } from './login';
