@@ -1,19 +1,7 @@
-import { Navigate, Outlet } from 'react-router-dom'
-import { useAuthentication } from '#/context/auth/AuthProvider'
+// src/layouts/app-layout.tsx
 
-import { SideNavbar } from './sidebar'
+import { Outlet } from 'react-router-dom'
 
-export function AppLayout() {
-  const { loggedIn } = useAuthentication()
-
-  if (!loggedIn) {
-    return <Navigate to="/login" replace />
-  }
-
-  return (
-    <main className="flex h-full min-h-screen items-center bg-gray-100 dark:bg-slate-900">
-      <SideNavbar collapsed={false} />
-      <Outlet />
-    </main>
-  )
+export default function AppLayout() {
+  return <Outlet />
 }
