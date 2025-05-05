@@ -1,9 +1,8 @@
 // src/routes.tsx
 import { Route, createBrowserRouter, createRoutesFromElements, defer } from 'react-router-dom'
 
-import { AppLayout, PublicLayout, RootLayout } from './layouts'
-import { AuthLayout } from './layouts/auth-layout'
-import { Login } from './pages/auth'
+import { AppLayout, PublicLayout, RootLayout, AuthLayout } from './layouts'
+import Login from './pages/auth'
 import Home from './pages/home'
 import UserDashboard from './pages/dashboard'
 import AdminDashboard from './pages/admin'
