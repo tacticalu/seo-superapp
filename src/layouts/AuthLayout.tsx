@@ -1,8 +1,7 @@
 // src/layouts/AuthLayout.tsx
 
-import { Outlet } from 'react-router-dom'
+import { ReactNode } from "react";
 
-export function AuthLayout() {
-  // TEMPORARY DISABLE LOGIN CHECK
-  return <Outlet />
+export default function AuthLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }
