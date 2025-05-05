@@ -1,12 +1,5 @@
-import { Navigate, Outlet } from 'react-router-dom'
-import { useAuthentication } from '#/context/auth/AuthProvider'
+import { Outlet } from 'react-router-dom';
 
-export function PublicLayout() {
-  const { loggedIn } = useAuthentication()
-
-  if (loggedIn) {
-    return <Navigate to="/dashboard" replace />
-  }
-
-  return <Outlet />
+export default function PublicLayout() {
+  return <Outlet />;
 }
