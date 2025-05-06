@@ -2,9 +2,10 @@ import React from 'react'
 
 export default function App() {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">Welcome to the SEO SuperApp</h1>
-      <p>This is your user dashboard. More features coming soon.</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold text-gray-800">
+        Welcome to the SEO SuperApp – User Dashboard
+      </h1>
     </div>
   )
 }
